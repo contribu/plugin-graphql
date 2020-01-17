@@ -36,6 +36,8 @@ export interface ActionParams {
   query?: string | DocumentNode;
   multiple?: boolean;
   name?: string;
+  beforeBuildQuery?: any;
+  afterBuildQuery?: any;
 }
 
 export interface Data extends ORMInstance<PatchedModel> {
