@@ -322,9 +322,10 @@
     source-map "^0.5.6"
     vue-template-es2015-compiler "^1.6.0"
 
-"@vuex-orm/core@git+https://github.com/contribu/vuex-orm.git#feature/fix_hydrate_build":
-  version "0.31.10"
-  resolved "git+https://github.com/contribu/vuex-orm.git#91b547c530dc1f332b8d3db8b2d753af63aa03d3"
+"@vuex-orm/core@^0.30.0":
+  version "0.30.0"
+  resolved "https://registry.yarnpkg.com/@vuex-orm/core/-/core-0.30.0.tgz#336d127e925f1ce7bd7afc1a8f50c3e1a9280f5b"
+  integrity sha512-2NrhcE1LDCRxhr1WUv2whcrTRuQtnzidJewDJh6PMpmdfh848DM9AYqk8JBCfyIxH+fYmLKhAu0IAEQ/l1oRYg==
 
 "@webassemblyjs/ast@1.4.3":
   version "1.4.3"
