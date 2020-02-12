@@ -1,6 +1,6 @@
 import { DocumentNode } from "graphql/language/ast";
 import { Arguments } from "../support/interfaces";
-import { FetchPolicy } from "apollo-client";
+// import { FetchPolicy } from "apollo-client";
 import { isPlainObject, prettify } from "../support/utils";
 
 /**
@@ -83,7 +83,7 @@ export default class Logger {
    * @param {Arguments} variables
    * @param {FetchPolicy} fetchPolicy
    */
-  public logQuery(query: string | DocumentNode, variables?: Arguments, fetchPolicy?: FetchPolicy) {
+  public logQuery(query: string | DocumentNode, variables?: Arguments, fetchPolicy?: any) {
     if (this.enabled) {
       try {
         let prettified = "";
