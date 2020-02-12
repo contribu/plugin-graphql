@@ -1,7 +1,7 @@
 /* istanbul ignore file */
 import { Database, Model as ORMModel } from "@vuex-orm/core";
 import RootState from "@vuex-orm/core/lib/modules/contracts/RootState";
-import { ApolloLink } from "apollo-link";
+// import { ApolloLink } from "apollo-link";
 import { DocumentNode } from "graphql/language/ast";
 
 export type DispatchFunction = (action: string, data: Data) => Promise<any>;
@@ -14,7 +14,7 @@ export interface Options {
   useGETForQueries?: boolean;
   debug?: boolean;
   connectionQueryMode?: string;
-  link?: ApolloLink;
+  apolloClient?: any; // ApolloLink;
 }
 
 export interface ActionParams {
