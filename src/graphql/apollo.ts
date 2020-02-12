@@ -7,6 +7,7 @@ import { Arguments, Data } from "../support/interfaces";
 import Transformer from "./transformer";
 import Model from "../orm/model";
 import gql from "graphql-tag";
+import { prettify } from "../support/utils";
 
 /**
  * This class takes care of the communication with the graphql endpoint by leveraging the awesome apollo-client lib.
@@ -49,6 +50,7 @@ export default class Apollo {
     // });
 
     this.apolloClient = context.options.apolloClient;
+    this.apolloClient.prettify = prettify;
   }
 
   /**
