@@ -251,6 +251,24 @@ export default class Context {
     return this.schemaWillBeLoaded;
   }
 
+  public loadSchemaSync(result: any) {
+    this.logger.log("loadSchemaSync");
+
+    if (this.options.connectionQueryMode) {
+      this.connectionQueryMode = this.options.connectionQueryMode;
+    } else {
+      this.connectionQueryMode = "auto";
+    }
+    this.schema = new Schema(result.data.__schema);
+    this.logger.log("GraphQL Schema successful fetched", result);
+
+    this.logger.log("Starting to process the schema ...");
+    this.processSchema();
+    this.logger.log("Schema procession done!");
+
+    this.schemaWillBeLoaded = Promise.resolve(this.schema);
+  }
+
   public processSchema() {
     this.models.forEach((model: Model) => {
       let type: GraphQLType;

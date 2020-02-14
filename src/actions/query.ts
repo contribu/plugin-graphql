@@ -37,7 +37,7 @@ export default class Query extends Action {
         return Store.insertData(mockReturnValue, dispatch!);
       }
 
-      const schema: Schema = await context.loadSchema();
+      const schema: Schema = context.schema || (await context.loadSchema());
 
       // Filter
       filter = filter ? Transformer.transformOutgoingData(model, filter) : {};

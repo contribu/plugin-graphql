@@ -31,7 +31,9 @@ export default class Fetch extends Action {
       return Store.insertData(mockReturnValue, dispatch!);
     }
 
-    await context.loadSchema();
+    if (!context.schema) {
+      await context.loadSchema();
+    }
 
     // Filter
     const filter =

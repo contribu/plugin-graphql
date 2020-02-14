@@ -31,7 +31,7 @@ export default class Action {
   ): Promise<any> {
     if (variables) {
       const context: Context = Context.getInstance();
-      const schema: Schema = await context.loadSchema();
+      const schema: Schema = context.schema || (await context.loadSchema());
 
       const multiple: boolean = Schema.returnsConnection(schema.getMutation(name)!);
       const query = QueryBuilder.buildQuery("mutation", model, name, variables, multiple);
