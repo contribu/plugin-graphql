@@ -50,14 +50,12 @@ export interface Arguments {
 }
 
 export interface GraphQLType {
-  description: string;
   name: string;
   fields?: Array<GraphQLField>;
   inputFields?: Array<GraphQLField>;
 }
 
 export interface GraphQLField {
-  description: string;
   name: string;
   args: Array<GraphQLField>;
   type: GraphQLTypeDefinition;

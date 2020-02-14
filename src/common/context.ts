@@ -14,13 +14,10 @@ query Introspection {
   __schema {
     types {
       name
-      description
       fields(includeDeprecated: true) {
         name
-        description
         args {
           name
-          description
           type {
             name
             kind
@@ -65,7 +62,6 @@ query Introspection {
 
       inputFields {
         name
-        description
         type {
           name
           kind
