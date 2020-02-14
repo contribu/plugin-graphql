@@ -23,14 +23,14 @@ export default class SimpleQuery extends Action {
     if (query) {
       const parsedQuery = parseQuery(query);
 
-      const mockReturnValue = context.globalMockHook("simpleQuery", {
-        name: parsedQuery.definitions[0]["name"].value,
-        variables
-      });
-
-      if (mockReturnValue) {
-        return mockReturnValue;
-      }
+      // const mockReturnValue = context.globalMockHook("simpleQuery", {
+      //   name: parsedQuery.definitions[0]["name"].value,
+      //   variables
+      // });
+      //
+      // if (mockReturnValue) {
+      //   return mockReturnValue;
+      // }
 
       variables = this.prepareArgs(variables);
 

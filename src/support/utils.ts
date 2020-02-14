@@ -1,6 +1,6 @@
-import { parse } from "graphql/language/parser";
-import { print } from "graphql/language/printer";
-import { DocumentNode } from "graphql/language/ast";
+// import { parse } from "graphql/language/parser";
+// import { print } from "graphql/language/printer";
+// import { DocumentNode } from "graphql/language/ast";
 
 // @ts-ignore
 import lodashIsEqual from "lodash.isequal";
@@ -38,8 +38,9 @@ export function downcaseFirstLetter(input: string) {
  * @param {string} query
  * @returns {string}
  */
-export function prettify(query: string | DocumentNode): string {
-  return print(parseQuery(query));
+export function prettify(query: string): string {
+  return query;
+  // return print(parseQuery(query));
 }
 
 /**
@@ -49,8 +50,9 @@ export function prettify(query: string | DocumentNode): string {
  *
  * @returns {DocumentNode} Query as GraphQL AST DocumentNode.
  */
-export function parseQuery(query: string | DocumentNode): DocumentNode {
-  return typeof query === "string" ? parse(query) : query;
+export function parseQuery(query: string): string {
+  return query;
+  // return typeof query === "string" ? parse(query) : query;
 }
 
 /**
@@ -58,8 +60,9 @@ export function parseQuery(query: string | DocumentNode): DocumentNode {
  *
  * @returns {string} the GraphQL query within a DocumentNode as a plain string.
  */
-export function graphQlDocumentToString(query: DocumentNode): string {
-  return query.loc!.source.body;
+export function graphQlDocumentToString(query: string): string {
+  return query;
+  // return query.loc!.source.body;
 }
 
 /**

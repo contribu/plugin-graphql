@@ -2,7 +2,7 @@ import { Relation } from "@vuex-orm/core";
 import Model from "../orm/model";
 import { Arguments, Field, GraphQLField } from "../support/interfaces";
 import { clone, isPlainObject, takeWhile, upcaseFirstLetter } from "../support/utils";
-import gql from "graphql-tag";
+// import gql from "graphql-tag";
 import Context from "../common/context";
 import Schema from "./schema";
 
@@ -138,7 +138,7 @@ export default class QueryBuilder {
       `  ${this.buildField(model, multiple, args, [], name, filter, true)}\n` +
       `}`;
 
-    return gql(query);
+    return query;
   }
 
   /**

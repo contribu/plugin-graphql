@@ -22,14 +22,14 @@ export default class SimpleMutation extends Action {
     if (query) {
       const parsedQuery = parseQuery(query);
 
-      const mockReturnValue = context.globalMockHook("simpleMutation", {
-        name: parsedQuery.definitions[0]["name"].value,
-        variables
-      });
-
-      if (mockReturnValue) {
-        return mockReturnValue;
-      }
+      // const mockReturnValue = context.globalMockHook("simpleMutation", {
+      //   name: parsedQuery.definitions[0]["name"].value,
+      //   variables
+      // });
+      //
+      // if (mockReturnValue) {
+      //   return mockReturnValue;
+      // }
 
       variables = this.prepareArgs(variables);
       const result = await context.apollo.simpleMutation(

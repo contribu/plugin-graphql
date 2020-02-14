@@ -6,7 +6,7 @@ import Context from "../common/context";
 import { Arguments, Data } from "../support/interfaces";
 import Transformer from "./transformer";
 import Model from "../orm/model";
-import gql from "graphql-tag";
+// import gql from "graphql-tag";
 import { prettify } from "../support/utils";
 
 /**
@@ -93,7 +93,7 @@ export default class Apollo {
   ): Promise<any> {
     const fetchPolicy = bypassCache ? "network-only" : "cache-first";
     return this.apolloClient.query({
-      query: gql(query),
+      query: query,
       variables,
       fetchPolicy,
       context: { headers: Apollo.getHeaders() }
@@ -102,7 +102,7 @@ export default class Apollo {
 
   public async simpleMutation(query: string, variables: Arguments, context?: Data): Promise<any> {
     return this.apolloClient.mutate({
-      mutation: gql(query),
+      mutation: query,
       variables,
       context: { headers: Apollo.getHeaders() }
     });

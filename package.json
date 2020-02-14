@@ -59,7 +59,6 @@
   "devDependencies": {
     "@commitlint/cli": "^7.1.2",
     "@commitlint/config-conventional": "^7.1.2",
-    "@types/graphql": "^0.12.3",
     "@types/jest": "^23.3.2",
     "@types/node": "^10.11.0",
     "@types/sinon": "^5.0.1",
@@ -71,9 +70,6 @@
     "coveralls": "^3.0.2",
     "cross-env": "^5.2.0",
     "cz-conventional-changelog": "^2.1.0",
-    "graphql": "^0.12.3",
-    "graphql-tag": "^2.6.1",
-    "graphql-tools": "^3.0.4",
     "husky": "^1.0.1",
     "jest": "^23.6.0",
     "jest-config": "^23.6.0",
