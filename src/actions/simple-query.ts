@@ -1,7 +1,7 @@
 import { ActionParams } from "../support/interfaces";
 import Action from "./action";
 import Context from "../common/context";
-import { clone, graphQlDocumentToString, parseQuery, removeSymbols } from "../support/utils";
+import { graphQlDocumentToString, parseQuery, removeSymbols } from "../support/utils";
 
 /**
  * SimpleQuery action for sending a model unrelated simple query.
@@ -41,7 +41,7 @@ export default class SimpleQuery extends Action {
       );
 
       // remove the symbols
-      return removeSymbols(clone(result.data));
+      return removeSymbols(result.data);
     } else {
       /* istanbul ignore next */
       throw new Error("The simpleQuery action requires the 'query' to be set");

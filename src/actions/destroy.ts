@@ -21,12 +21,12 @@ export default class Destroy extends Action {
       const model = this.getModelFromState(state!);
       const mutationName = NameGenerator.getNameForDestroy(model);
 
-      const mockReturnValue = model.$mockHook("destroy", { id });
-
-      if (mockReturnValue) {
-        await Store.insertData(mockReturnValue, dispatch!);
-        return true;
-      }
+      // const mockReturnValue = model.$mockHook("destroy", { id });
+      //
+      // if (mockReturnValue) {
+      //   await Store.insertData(mockReturnValue, dispatch!);
+      //   return true;
+      // }
 
       args = this.prepareArgs(args, id);
 

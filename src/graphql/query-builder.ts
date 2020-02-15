@@ -1,7 +1,7 @@
 import { Relation } from "@vuex-orm/core";
 import Model from "../orm/model";
 import { Arguments, Field, GraphQLField } from "../support/interfaces";
-import { clone, isPlainObject, takeWhile, upcaseFirstLetter } from "../support/utils";
+import { isPlainObject, takeWhile, upcaseFirstLetter } from "../support/utils";
 // import gql from "graphql-tag";
 import Context from "../common/context";
 import Schema from "./schema";
@@ -108,7 +108,7 @@ export default class QueryBuilder {
     const context = Context.getInstance();
 
     model = context.getModel(model);
-    args = (args ? clone(args) : {}) as Arguments;
+    args = (args ? { ...args } : {}) as Arguments;
 
     Object.keys(args).forEach((key: string) => {
       if (args && args[key] && isPlainObject(args[key])) {

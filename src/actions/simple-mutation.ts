@@ -1,7 +1,7 @@
 import { ActionParams } from "../support/interfaces";
 import Action from "./action";
 import Context from "../common/context";
-import { clone, graphQlDocumentToString, parseQuery } from "../support/utils";
+import { graphQlDocumentToString, parseQuery } from "../support/utils";
 
 /**
  * SimpleMutation action for sending a model unrelated simple mutation.
@@ -38,7 +38,7 @@ export default class SimpleMutation extends Action {
       );
 
       // remove the symbols
-      return clone(result.data);
+      return result.data;
     } else {
       /* istanbul ignore next */
       throw new Error("The simpleMutation action requires the 'query' to be set");

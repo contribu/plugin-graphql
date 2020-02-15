@@ -23,13 +23,13 @@ export default class Fetch extends Action {
     const context = Context.getInstance();
     const model = this.getModelFromState(state!);
 
-    const mockReturnValue = model.$mockHook("fetch", {
-      filter: params ? params.filter || {} : {}
-    });
-
-    if (mockReturnValue) {
-      return Store.insertData(mockReturnValue, dispatch!);
-    }
+    // const mockReturnValue = model.$mockHook("fetch", {
+    //   filter: params ? params.filter || {} : {}
+    // });
+    //
+    // if (mockReturnValue) {
+    //   return Store.insertData(mockReturnValue, dispatch!);
+    // }
 
     if (!context.schema) {
       await context.loadSchema();

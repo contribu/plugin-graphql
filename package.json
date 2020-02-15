@@ -74,8 +74,6 @@
     "jest": "^23.6.0",
     "jest-config": "^23.6.0",
     "lint-staged": "^7.3.0",
-    "lodash.clone": "^4.5.0",
-    "lodash.isequal": "^4.5.0",
     "node-fetch": "^2.1.1",
     "normalizr": "^3.2.4",
     "pluralize": "^7.0.0",

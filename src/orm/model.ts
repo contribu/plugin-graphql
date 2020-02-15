@@ -2,7 +2,7 @@ import { Model as ORMModel } from "@vuex-orm/core";
 import { Field } from "../support/interfaces";
 import Context from "../common/context";
 import { Mock, MockOptions } from "../test-utils";
-import { pluralize, singularize, pick, isEqual } from "../support/utils";
+import { pluralize, singularize } from "../support/utils";
 
 /**
  * Wrapper around a Vuex-ORM model with some useful methods.
@@ -271,13 +271,13 @@ export default class Model {
    * @param {Mock} mock - Mock config.
    * @returns {boolean}
    */
-  public $addMock(mock: Mock): boolean {
-    if (this.$findMock(mock.action, mock.options)) return false;
-    if (!this.mocks[mock.action]) this.mocks[mock.action] = [];
-
-    this.mocks[mock.action].push(mock);
-    return true;
-  }
+  // public $addMock(mock: Mock): boolean {
+  //   if (this.$findMock(mock.action, mock.options)) return false;
+  //   if (!this.mocks[mock.action]) this.mocks[mock.action] = [];
+  //
+  //   this.mocks[mock.action].push(mock);
+  //   return true;
+  // }
 
   /**
    * Finds a mock for the given action and options.
@@ -286,20 +286,20 @@ export default class Model {
    * @param {MockOptions} options - MockOptions like { variables: { id: 42 } }.
    * @returns {Mock | null} null when no mock was found.
    */
-  public $findMock(action: string, options: MockOptions | undefined): Mock | null {
-    if (this.mocks[action]) {
-      return (
-        this.mocks[action].find(m => {
-          if (!m.options || !options) return true;
-
-          const relevantOptions = pick(options, Object.keys(m.options));
-          return isEqual(relevantOptions, m.options || {});
-        }) || null
-      );
-    }
-
-    return null;
-  }
+  // public $findMock(action: string, options: MockOptions | undefined): Mock | null {
+  //   if (this.mocks[action]) {
+  //     return (
+  //       this.mocks[action].find(m => {
+  //         if (!m.options || !options) return true;
+  //
+  //         const relevantOptions = pick(options, Object.keys(m.options));
+  //         return isEqual(relevantOptions, m.options || {});
+  //       }) || null
+  //     );
+  //   }
+  //
+  //   return null;
+  // }
 
   /**
    * Hook to be called by all actions in order to get the mock returnValue.
@@ -308,28 +308,28 @@ export default class Model {
    * @param {MockOptions} options - MockOptions.
    * @returns {any} null when no mock was found.
    */
-  public $mockHook(action: string, options: MockOptions): any {
-    let returnValue: null | { [key: string]: any } = null;
-    const mock = this.$findMock(action, options);
-
-    if (mock) {
-      if (mock.returnValue instanceof Function) {
-        returnValue = mock.returnValue();
-      } else {
-        returnValue = mock.returnValue || null;
-      }
-    }
-
-    if (returnValue) {
-      if (returnValue instanceof Array) {
-        returnValue.forEach(r => (r.$isPersisted = true));
-      } else {
-        returnValue.$isPersisted = true;
-      }
-
-      return { [this.pluralName]: returnValue };
-    }
-
-    return null;
-  }
+  // public $mockHook(action: string, options: MockOptions): any {
+  //   let returnValue: null | { [key: string]: any } = null;
+  //   const mock = this.$findMock(action, options);
+  //
+  //   if (mock) {
+  //     if (mock.returnValue instanceof Function) {
+  //       returnValue = mock.returnValue();
+  //     } else {
+  //       returnValue = mock.returnValue || null;
+  //     }
+  //   }
+  //
+  //   if (returnValue) {
+  //     if (returnValue instanceof Array) {
+  //       returnValue.forEach(r => (r.$isPersisted = true));
+  //     } else {
+  //       returnValue.$isPersisted = true;
+  //     }
+  //
+  //     return { [this.pluralName]: returnValue };
+  //   }
+  //
+  //   return null;
+  // }
 }

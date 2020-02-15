@@ -24,14 +24,14 @@ export default class Mutate extends Action {
       const context: Context = Context.getInstance();
       const model = this.getModelFromState(state!);
 
-      const mockReturnValue = model.$mockHook("mutate", {
-        name,
-        args: args || {}
-      });
-
-      if (mockReturnValue) {
-        return Store.insertData(mockReturnValue, dispatch!);
-      }
+      // const mockReturnValue = model.$mockHook("mutate", {
+      //   name,
+      //   args: args || {}
+      // });
+      //
+      // if (mockReturnValue) {
+      //   return Store.insertData(mockReturnValue, dispatch!);
+      // }
 
       const schema: Schema = context.schema || (await context.loadSchema());
       args = this.prepareArgs(args);

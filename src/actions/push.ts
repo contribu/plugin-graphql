@@ -22,14 +22,14 @@ export default class Push extends Action {
       const model = this.getModelFromState(state!);
       const mutationName = NameGenerator.getNameForPush(model);
 
-      const mockReturnValue = model.$mockHook("push", {
-        data,
-        args: args || {}
-      });
-
-      if (mockReturnValue) {
-        return Store.insertData(mockReturnValue, dispatch!);
-      }
+      // const mockReturnValue = model.$mockHook("push", {
+      //   data,
+      //   args: args || {}
+      // });
+      //
+      // if (mockReturnValue) {
+      //   return Store.insertData(mockReturnValue, dispatch!);
+      // }
 
       // Arguments
       args = this.prepareArgs(args, data.id);

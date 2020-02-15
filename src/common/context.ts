@@ -2,7 +2,7 @@ import Logger from "./logger";
 import Model from "../orm/model";
 import { Model as ORMModel } from "@vuex-orm/core";
 import { Components } from "@vuex-orm/core/lib/plugins/use";
-import { singularize, downcaseFirstLetter, isEqual, pick } from "../support/utils";
+import { singularize, downcaseFirstLetter } from "../support/utils";
 import Apollo from "../graphql/apollo";
 import Database from "@vuex-orm/core/lib/database/Database";
 import { Field, GraphQLType, Options } from "../support/interfaces";
@@ -325,13 +325,13 @@ export default class Context {
    *
    * @param {Mock} mock - Mock config.
    */
-  public addGlobalMock(mock: Mock): boolean {
-    if (this.findGlobalMock(mock.action, mock.options)) return false;
-    if (!this.globalMocks[mock.action]) this.globalMocks[mock.action] = [];
-
-    this.globalMocks[mock.action].push(mock);
-    return true;
-  }
+  // public addGlobalMock(mock: Mock): boolean {
+  //   if (this.findGlobalMock(mock.action, mock.options)) return false;
+  //   if (!this.globalMocks[mock.action]) this.globalMocks[mock.action] = [];
+  //
+  //   this.globalMocks[mock.action].push(mock);
+  //   return true;
+  // }
 
   /**
    * Finds a global mock for the given action and options.
@@ -340,20 +340,20 @@ export default class Context {
    * @param {MockOptions} options - MockOptions like { name: 'example' }.
    * @returns {Mock | null} null when no mock was found.
    */
-  public findGlobalMock(action: string, options: MockOptions | undefined): Mock | null {
-    if (this.globalMocks[action]) {
-      return (
-        this.globalMocks[action].find(m => {
-          if (!m.options || !options) return true;
-
-          const relevantOptions = pick(options, Object.keys(m.options));
-          return isEqual(relevantOptions, m.options || {});
-        }) || null
-      );
-    }
-
-    return null;
-  }
+  // public findGlobalMock(action: string, options: MockOptions | undefined): Mock | null {
+  //   if (this.globalMocks[action]) {
+  //     return (
+  //       this.globalMocks[action].find(m => {
+  //         if (!m.options || !options) return true;
+  //
+  //         const relevantOptions = pick(options, Object.keys(m.options));
+  //         return isEqual(relevantOptions, m.options || {});
+  //       }) || null
+  //     );
+  //   }
+  //
+  //   return null;
+  // }
 
   /**
    * Hook to be called by simpleMutation and simpleQuery actions in order to get the global mock
@@ -363,20 +363,20 @@ export default class Context {
    * @param {MockOptions} options - MockOptions.
    * @returns {any} null when no mock was found.
    */
-  public globalMockHook(action: string, options: MockOptions): any {
-    let returnValue: null | { [key: string]: any } = null;
-    const mock = this.findGlobalMock(action, options);
-
-    if (mock) {
-      if (mock.returnValue instanceof Function) {
-        returnValue = mock.returnValue();
-      } else {
-        returnValue = mock.returnValue || null;
-      }
-    }
-
-    return returnValue;
-  }
+  // public globalMockHook(action: string, options: MockOptions): any {
+  //   let returnValue: null | { [key: string]: any } = null;
+  //   const mock = this.findGlobalMock(action, options);
+  //
+  //   if (mock) {
+  //     if (mock.returnValue instanceof Function) {
+  //       returnValue = mock.returnValue();
+  //     } else {
+  //       returnValue = mock.returnValue || null;
+  //     }
+  //   }
+  //
+  //   return returnValue;
+  // }
 
   /**
    * Wraps all Vuex-ORM entities in a Model object and saves them into this.models

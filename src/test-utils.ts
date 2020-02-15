@@ -48,12 +48,12 @@ export class Mock {
   }
 
   private installMock(): void {
-    if (this.action === "simpleQuery" || this.action === "simpleMutation") {
-      context!.addGlobalMock(this);
-    } else {
-      const model: Model = context!.getModel(this.modelClass!.entity);
-      model.$addMock(this);
-    }
+    // if (this.action === "simpleQuery" || this.action === "simpleMutation") {
+    //   context!.addGlobalMock(this);
+    // } else {
+    //   const model: Model = context!.getModel(this.modelClass!.entity);
+    //   model.$addMock(this);
+    // }
   }
 }
 

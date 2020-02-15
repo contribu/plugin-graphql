@@ -3,10 +3,10 @@
 // import { DocumentNode } from "graphql/language/ast";
 
 // @ts-ignore
-import lodashIsEqual from "lodash.isequal";
+// import lodashIsEqual from "lodash.isequal";
 
 // @ts-ignore
-import lodashClone from "lodash.clone";
+// import lodashClone from "lodash.clone";
 
 // @ts-ignore
 import pluralizeLib from "pluralize";
@@ -97,15 +97,15 @@ export function pick(object: any, props: Array<string>) {
   return result;
 }
 
-export function isEqual(a: object, b: object): boolean {
-  // Couldn' find a simpler working implementation yet.
-  return lodashIsEqual(a, b);
-}
+// export function isEqual(a: object, b: object): boolean {
+//   // Couldn' find a simpler working implementation yet.
+//   return lodashIsEqual(a, b);
+// }
 
-export function clone(input: any): any {
-  // Couldn' find a simpler working implementation yet.
-  return lodashClone(input);
-}
+// export function clone(input: any): any {
+//   // Couldn' find a simpler working implementation yet.
+//   return lodashClone(input);
+// }
 
 export function takeWhile(
   array: Array<any>,
@@ -120,11 +120,11 @@ export function takeWhile(
   return array.slice(0, index);
 }
 
-export function matches(source: any) {
-  source = clone(source);
-
-  return (object: any) => isEqual(object, source);
-}
+// export function matches(source: any) {
+//   source = clone(source);
+//
+//   return (object: any) => isEqual(object, source);
+// }
 
 export function removeSymbols(input: any) {
   return JSON.parse(JSON.stringify(input));

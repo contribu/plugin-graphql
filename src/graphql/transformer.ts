@@ -2,13 +2,7 @@ import { Data, Field } from "../support/interfaces";
 import Model from "../orm/model";
 import { Model as ORMModel } from "@vuex-orm/core";
 import Context from "../common/context";
-import {
-  pluralize,
-  singularize,
-  clone,
-  downcaseFirstLetter,
-  isPlainObject
-} from "../support/utils";
+import { pluralize, singularize, downcaseFirstLetter, isPlainObject } from "../support/utils";
 
 /**
  * This class provides methods to transform incoming data from GraphQL in to a format Vuex-ORM understands and
@@ -147,6 +141,6 @@ export default class Transformer {
     }
 
     // Make sure this is really a plain JS object. We had some issues in testing here.
-    return clone(result);
+    return { ...result };
   }
 }

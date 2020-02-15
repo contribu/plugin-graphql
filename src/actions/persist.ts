@@ -24,16 +24,16 @@ export default class Persist extends Action {
       const mutationName = NameGenerator.getNameForPersist(model);
       const oldRecord = model.getRecordWithId(id);
 
-      const mockReturnValue = model.$mockHook("persist", {
-        id,
-        args: args || {}
-      });
-
-      if (mockReturnValue) {
-        const newRecord = Store.insertData(mockReturnValue, dispatch!);
-        await this.deleteObsoleteRecord(model, newRecord, oldRecord);
-        return newRecord;
-      }
+      // const mockReturnValue = model.$mockHook("persist", {
+      //   id,
+      //   args: args || {}
+      // });
+      //
+      // if (mockReturnValue) {
+      //   const newRecord = Store.insertData(mockReturnValue, dispatch!);
+      //   await this.deleteObsoleteRecord(model, newRecord, oldRecord);
+      //   return newRecord;
+      // }
 
       // Arguments
       args = this.prepareArgs(args);

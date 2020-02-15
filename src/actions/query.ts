@@ -28,14 +28,14 @@ export default class Query extends Action {
       const context: Context = Context.getInstance();
       const model = this.getModelFromState(state!);
 
-      const mockReturnValue = model.$mockHook("query", {
-        name,
-        filter: filter || {}
-      });
-
-      if (mockReturnValue) {
-        return Store.insertData(mockReturnValue, dispatch!);
-      }
+      // const mockReturnValue = model.$mockHook("query", {
+      //   name,
+      //   filter: filter || {}
+      // });
+      //
+      // if (mockReturnValue) {
+      //   return Store.insertData(mockReturnValue, dispatch!);
+      // }
 
       const schema: Schema = context.schema || (await context.loadSchema());
 
